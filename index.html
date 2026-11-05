@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Sushi Warrior</title>
+</head>
+
+<body>
+    <header>
+        <div class="CorHeader">
+            <ul class="Ulheader">
+                <li>
+                    <label for="check" id="caixinha">
+                        <input type="checkbox" name="" id="check">
+                        <span id="bolinha"><img src="IMG's/sol.png" id="SolLua"></span>
+                    </label>
+                </li>
+                <li class="Logo"><a href="index.html"><img src="IMG's/LogoLoja.png" id="LogoLoja"></a></li>
+                <li class="MeuNome"><a href="index.html">Sushi Warrior</a></li>
+                <li class="Cardapio"><a href="#section1">Cardapio</a></li>
+                <li class="Meus-Pedidos"><a href="#">Meus Pedidos</a></li>
+                <li class="Carrinho">
+                    <a href="#" id="btn-abrir-carrinho" onclick="abrirCarrinho(event)">
+                        Carrinho <span id="contador-carrinho">0</span>
+                    </a>
+                </li>
+                <li class="Perfil"><a href="Perfil.html">Perfil</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="TextoChamativo">
+        <div class="CorChamativo">
+            <div class="TxTChamativo">
+                <h1>O melhor Sushi da cidade é o Sushi Warrior</h1>
+                <h3>Peças frescas e preparadas na hora. Peça já o seu combo favorito!</h3>
+                <h4><a class="aMain" href="#section1">Veja o nosso cardapio agora!</a></h4>
+            </div>
+        </div>
+    </main>
+
+    <section id="section1">
+        <div class="CorSection1">
+            <div class="Combinados" data-categoria="combinados" onclick="filtrarCategoria('combinados')">
+                <h1>Combinados</h1>
+                <p>O prato que reúne todo mundo — sashimi, niguiri, hot roll e uramaki na mesma tábua.</p>
+            </div>
+
+            <div class="Temaki" data-categoria="temaki" onclick="filtrarCategoria('temaki')">
+                <h1>Temaki</h1>
+                <p>Enrolado na hora, na mão — do jeito que se come de verdade.</p>
+            </div>
+
+            <div class="Hot" data-categoria="hot" onclick="filtrarCategoria('hot')">
+                <h1>Hot rolls</h1>
+                <p>Empanado por fora, cremoso por dentro. Sai da chapa quentinho.</p>
+            </div>
+
+            <div class="Sashimi" data-categoria="sashimi" onclick="filtrarCategoria('sashimi')">
+                <h1>Sashimi & cru</h1>
+                <p>Corte do dia, sem intermediário. O frescor sem enfeite.</p>
+            </div>
+
+            <div class="Poke" data-categoria="poke" onclick="filtrarCategoria('poke')">
+                <h1>Poke</h1>
+                <p>Monte do seu jeito: base, proteína e acompanhamento à vontade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cardapio">
+        <div class="cardapio-header">
+            <h2 id="titulo-categoria">Todos os Produtos</h2>
+            <div class="cardapio-controles">
+                <input type="text" id="campo-pesquisa" placeholder="Pesquisar produto ou ingrediente..."
+                    oninput="pesquisarProdutos()">
+                <button class="btn-todos" onclick="filtrarCategoria('todos')">Mostrar Todos</button>
+            </div>
+        </div>
+
+        <!--Os 5 primeiros-->
+        <div id="lista-produtos">
+            <div class="item-produto" data-categoria="combinados">
+                <img src="IMG's/Combinado.jpg" alt="Combo Salmão">
+                <div class="conteudo-produto">
+                    <h3>Combo Salmão Supreme (20 peças)</h3>
+                    <p>8 Niguiris, 8 Hot Rolls e 4 Sashimis de Salmão fresco.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 69,90</span>
+                        <button class="btn-add" onclick="adicionarDoCard(this)">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="temaki">
+                <img src="IMG's/Temaki.jpg" alt="Temaki Salmão">
+                <div class="conteudo-produto">
+                    <h3>Temaki Salmão Completo</h3>
+                    <p>Cone de alga crocante recheado com salmão e cream cheese.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 28,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="hot">
+                <img src="IMG's/HotRollpng.png" alt="Hot Roll">
+                <div class="conteudo-produto">
+                    <h3>Hot Roll Cream Cheese (6 un)</h3>
+                    <p>Sushi empanado crocante recheado com salmão e cream cheese, finalizado com molho tarê artesanal.
+                    </p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 26,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="sashimi">
+                <img src="IMG's/SashimiSalmao.jpg" alt="Sashimi de Salmão">
+                <div class="conteudo-produto">
+                    <h3>Sashimi Salmão (10 lâminas)</h3>
+                    <p>Cortes nobres de salmão fresco fatiados com precisão.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 42,00</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="poke">
+                <img src="IMG's/Poke.jpg" alt="Poke de Salmão">
+                <div class="conteudo-produto">
+                    <h3>Poke Duo Warrior</h3>
+                    <p>Base de arroz japonês, fatias de salmão e atum frescos, abacate cremoso e gergelim torrado.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 45,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Resto do Cardapio & Combinados-->
+            <div class="item-produto" data-categoria="combinados">
+                <img src="IMG's/Combinado2.avif" alt="Combo Warrior Executivo">
+                <div class="conteudo-produto">
+                    <h3>Combo Warrior Executivo (18 peças)</h3>
+                    <p>5 Sashimis, 4 Uramakis, 4 Hossomakis, 3 Niguiris e 2 Djos de salmão com cream cheese.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 58,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="combinados">
+                <img src="IMG's/Combinado3jpg.jpg" alt="Combo Premium Duplo">
+                <div class="conteudo-produto">
+                    <h3>Combo Salmão Tradicional (26 peças)</h3>
+                    <p>10 Niguiris de salmão fresco, 8 Uramakis de salmão e 8 Djos de salmão batido com cebolinha.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 84,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Temaki-->
+            <div class="item-produto" data-categoria="temaki">
+                <img src="IMG's/Temaki2.jpg" alt="Temaki Hot Crocante">
+                <div class="conteudo-produto">
+                    <h3>Temaki Hot Crocante</h3>
+                    <p>Cone de alga frito empanado em panko, recheado com bastante salmão fresco, cream cheese e
+                        cebolinha.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 31,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="temaki">
+                <img src="IMG's/Temaki3.jpg" alt="Temaki Ebi Shrimp">
+                <div class="conteudo-produto">
+                    <h3>Temaki Salmão Especial</h3>
+                    <p>Alga crocante recheada com cubos generosos de salmão fresco, gergelim torrado e cream cheese.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 32,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Hot-->
+            <div class="item-produto" data-categoria="hot">
+                <img src="IMG's/HotRoll2.jpg" alt="Hot Couve">
+                <div class="conteudo-produto">
+                    <h3>Hot Roll Couve Crispy (10 un)</h3>
+                    <p>Clássico hot roll de salmão coberto com couve bem fininha e crocante.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 36,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="hot">
+                <img src="IMG's/HotRoll3.jpg" alt="Hot Doritos">
+                <div class="conteudo-produto">
+                    <h3>Hot Roll Geleia de Pimenta (8 un)</h3>
+                    <p>Empanado super crocante recheado com salmão e cream cheese, coberto com gotas de geleia de
+                        pimenta.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 32,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Sashimi-->
+            <div class="item-produto" data-categoria="sashimi">
+                <img src="IMG's/Sashimi2.webp" alt="Sashimi de Tuna">
+                <div class="conteudo-produto">
+                    <h3>Sashimi Duo (10 lâminas)</h3>
+                    <p>5 lâminas frescas de salmão e 5 lâminas de atum selecionado.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 46,00</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="sashimi">
+                <img src="IMG's/Sashimi3.avif" class="img-festival" alt="Carpaccio de Salmão">
+                <div class="conteudo-produto">
+                    <h3>Festival Sashimi Warrior (30 peças)</h3>
+                    <p>Seleção especial e generosa de lâminas de salmão, atum e peixe branco do dia.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 119,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Pokes-->
+            <div class="item-produto" data-categoria="poke">
+                <img src="IMG's/Poke2.webp" alt="Poke Ebi Tempura">
+                <div class="conteudo-produto">
+                    <h3>Poke Salmão Classic</h3>
+                    <p>Base de shari, cubos generosos de salmão fresco, abacate fatiado, edamame e brotos selecionados.
+                    </p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 42,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-produto" data-categoria="poke">
+                <img src="IMG's/Poke3.webp" alt="Poke Veggie">
+                <div class="conteudo-produto">
+                    <h3>Poke Tropical Hawaii</h3>
+                    <p>Cubos de atum e salmão frescos, manga suculenta, abacate, pepino laminado e molho especial.</p>
+                    <div class="rodape-card">
+                        <span class="preco">R$ 39,90</span>
+                        <button class="btn-add">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Monte o seu e modal monte o seu-->
+            <div class="item-produto" data-categoria="combinados">
+                <img src="IMG's/CombinadoEx.jpg" alt="Monte o seu">
+                <div class="conteudo-produto">
+                    <h3>Monte o Seu</h3>
+                    <p>Monte o seu combinado personalizado com o que você quiser!</p>
+                    <div class="rodape-card">
+                        <span class="preco">A partir de R$ 10,90</span>
+                        <button class="btn-monte-seu" onclick="abrirModalMonteSeu()">Monte o Seu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div id="carrinho-overlay" class="carrinho-overlay" onclick="fecharCarrinho()"></div>
+
+    <aside id="carrinho-drawer" class="carrinho-drawer">
+        <div class="carrinho-header">
+            <h2>Seu Pedido</h2>
+            <button class="btn-fechar-carrinho" onclick="fecharCarrinho()">&times;</button>
+        </div>
+
+        <div id="itens-carrinho" class="carrinho-body"></div>
+
+        <div class="carrinho-footer">
+            <div class="carrinho-total">
+                <span>Total:</span>
+                <strong id="preco-total">R$ 0,00</strong>
+            </div>
+            <button class="btn-finalizar" onclick="abrirCheckout()">Ir para Pagamento</button>
+        </div>
+    </aside>
+
+    <div id="carrinho-overlay" class="carrinho-overlay" onclick="fecharCarrinho()"></div>
+
+    <!-- DRAWER DO MONTE O SEU (SIDE PANEL) -->
+    <aside id="customizador-drawer" class="carrinho-drawer">
+        <div class="carrinho-header">
+            <h2>Monte Seu Combinado</h2>
+            <button class="btn-fechar-carrinho" onclick="fecharCustomizador()">&times;</button>
+        </div>
+
+        <div class="carrinho-body">
+            <p class="customizador-instrucao">Monte seu combo do seu jeito. Selecione as peças desejadas abaixo:</p>
+
+            <div class="lista-pecas-custom">
+                <!-- Sashimi -->
+                <div class="item-peca" data-id="sashimi_salmao" data-preco="3.50">
+                    <img src="IMG's/Salmão-fatiadoUnico.jpg" alt="Sashimi de Salmão" class="img-peca-custom">
+                    <div class="info-peca">
+                        <strong>Sashimi de Salmão</strong>
+                        <span>R$ 3,50 / un</span>
+                    </div>
+                    <div class="controles-qtd">
+                        <button class="btn-qtd" onclick="alterarPecaCustom('sashimi_salmao', -1)">-</button>
+                        <span id="qtd-sashimi_salmao">0</span>
+                        <button class="btn-qtd" onclick="alterarPecaCustom('sashimi_salmao', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Hot Roll -->
+                <div class="item-peca" data-id="hot_roll" data-preco="2.80">
+                    <img src="IMG's/HotRollUnitario.png" alt="Hot Roll Cream Cheese" class="img-peca-custom">
+                    <div class="info-peca">
+                        <strong>Hot Roll Cream Cheese</strong>
+                        <span>R$ 2,80 / un</span>
+                    </div>
+                    <div class="controles-qtd">
+                        <button class="btn-qtd" onclick="alterarPecaCustom('hot_roll', -1)">-</button>
+                        <span id="qtd-hot_roll">0</span>
+                        <button class="btn-qtd" onclick="alterarPecaCustom('hot_roll', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Niguiri -->
+                <div class="item-peca" data-id="niguiri_salmao" data-preco="3.00">
+                    <img src="IMG's/single-salmon-niguiri.webp" alt="Niguiri de Salmão" class="img-peca-custom">
+                    <div class="info-peca">
+                        <strong>Niguiri de Salmão</strong>
+                        <span>R$ 3,00 / un</span>
+                    </div>
+                    <div class="controles-qtd">
+                        <button class="btn-qtd" onclick="alterarPecaCustom('niguiri_salmao', -1)">-</button>
+                        <span id="qtd-niguiri_salmao">0</span>
+                        <button class="btn-qtd" onclick="alterarPecaCustom('niguiri_salmao', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Uramaki -->
+                <div class="item-peca" data-id="uramaki_salmao" data-preco="2.70">
+                    <img src="IMG's/UnicoUramaki.webp" alt="Uramaki Salmão" class="img-peca-custom">
+                    <div class="info-peca">
+                        <strong>Uramaki Salmão</strong>
+                        <span>R$ 2,70 / un</span>
+                    </div>
+                    <div class="controles-qtd">
+                        <button class="btn-qtd" onclick="alterarPecaCustom('uramaki_salmao', -1)">-</button>
+                        <span id="qtd-uramaki_salmao">0</span>
+                        <button class="btn-qtd" onclick="alterarPecaCustom('uramaki_salmao', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carrinho-footer">
+            <div class="carrinho-total">
+                <span>Subtotal Combinado:</span>
+                <strong id="preco-customizador">R$ 0,00</strong>
+            </div>
+            <button class="btn-finalizar" onclick="confirmarCombinadoCustomizado()">Adicionar ao Carrinho</button>
+        </div>
+    </aside>
+
+    <div id="modal-pagamento" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Pagamento & Entrega</h2>
+                <button class="btn-fechar-modal" onclick="fecharModalPagamento()">&times;</button>
+            </div>
+            <form id="form-pagamento" onsubmit="confirmarPagamento(event)">
+                <div class="campo-grupo">
+                    <label for="endereco">Endereço de Entrega</label>
+                    <input type="text" id="endereco" placeholder="Rua, número e bairro" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label>Forma de Pagamento</label>
+                    <div class="opcoes-pagamento">
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="pix" checked>
+                            <span>PIX (Aprovação Instantânea)</span>
+                        </label>
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="cartao">
+                            <span>Cartão de Crédito / Débito</span>
+                        </label>
+                        <label class="opcao-card">
+                            <input type="radio" name="pagamento" value="dinheiro">
+                            <span>Dinheiro na Entrega</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="resumo-valores">
+                    <div class="linha-resumo">
+                        <span>Subtotal:</span>
+                        <span id="checkout-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="linha-resumo">
+                        <span>Taxa de Entrega (Frete):</span>
+                        <span id="checkout-frete">R$ 8,00</span>
+                    </div>
+                    <div class="linha-resumo total-destaque">
+                        <span>Total Final:</span>
+                        <span id="checkout-total">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-confirmar-pagamento">Confirmar Pagamento</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-status-pedido" class="modal-overlay">
+        <div class="modal-card status-card">
+            <div class="status-icone">🍣</div>
+            <h2>Pedido Confirmado!</h2>
+            <p>Seu pedido foi recebido e já está em preparação na cozinha.</p>
+
+            <div class="container-timer">
+                <span>Tempo estimado para entrega:</span>
+                <div id="timer-contagem">35:00</div>
+            </div>
+
+            <div class="barra-progresso-wrapper">
+                <div class="barra-progresso-preenchimento"></div>
+            </div>
+
+            <button class="btn-fechar-modal-status" onclick="fecharModalStatus()">Acompanhar Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <div class="footer-logo">
+                    <img src="IMG's/LogoLoja.png" alt="Sushi Warrior Logo">
+                    <h3>Sushi Warrior</h3>
+                </div>
+                <p>O melhor da culinária japonesa com peixes frescos e preparados com maestria artesanal.</p>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#section1">Categorias</a></li>
+                    <li><a href="#cardapio">Cardápio Completo</a></li>
+                    <li><a href="#" onclick="abrirCarrinho(event)">Meu Carrinho</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Atendimento</h4>
+                <p>Segunda a Sabado: 18h às 23:30h</p>
+                <p>Rua dos Guerreiros, 1000 - Burtis</p>
+                <p>Contato: (31) 9520-3525</p>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Formas de Pagamento</h4>
+                <p>Aceitamos Pix, Cartão de Crédito, Débito e Dinheiro na entrega.</p>
+            </div>
+        </div>
+
+        <div class="footer-direitos">
+            <p>&copy; 2026 Sushi Warrior. Todos os direitos reservados. Projeto Escolar.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

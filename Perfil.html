@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Perfil Sushi Warrior</title>
+</head>
+
+<body>
+    <header>
+        <div class="CorHeader">
+            <ul class="Ulheader">
+                <li>
+                    <label for="check" id="caixinha">
+                        <input type="checkbox" name="" id="check">
+                        <span id="bolinha"><img src="IMG's/sol.png" id="SolLua"></span>
+                    </label>
+                </li>
+                <li class="Logo"><a href="index.html"><img src="IMG's/LogoLoja.png" id="LogoLoja"></a></li>
+                <li class="MeuNome"><a href="index.html">Sushi Warrior</a></li>
+                <li class="Cardapio"><a href="#section1">Cardapio</a></li>
+                <li class="Meus-Pedidos"><a href="#">Meus Pedidos</a></li>
+                <li class="Carrinho">
+                    <a href="#" id="btn-abrir-carrinho" onclick="abrirCarrinho(event)">
+                        Carrinho <span id="contador-carrinho">0</span>
+                    </a>
+                </li>
+                <li class="Perfil"><a href="Perfil.html">Perfil</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="TextoChamativo">
+        <div class="CorChamativo">
+            <div class="TxTChamativo">
+                <div class="conteudo-text">
+                    <h1>Faça login </h1>
+                    <p>Seu nome:</p>
+                    <input type="text">
+                    <p>Senha:</p>
+                    <input type="text"><br>
+                    <button class="btn-add" onclick="RespostaLogin()">Terminar Login</button>
+                </div>
+            </div>
+        </div>
+
+        <br> <br>
+        
+        <div class="CorChamativo">
+            <div class="TxTChamativo">
+                <div class="conteudo-text">
+                    <h1>Criar conta</h1>
+                    <p>Seu nome:</p>
+                    <input type="text">
+                    <p>Senha:</p>
+                    <input type="text">
+                    <p>Rescreva sua senha:</p>
+                    <input type="text"><br><br>
+                    <label for="Cep">Cep</label>
+                    <input type="cep" name="" id="Cep" placeholder="xx.xxx-xxx" oninput="mascaraCep()" maxlength="10"> <br><br>
+                    <label for="CPF ">CPF</label>
+                    <input type="cpf" name="" id="CPF" placeholder="xxx.xxx.xxx-xx" oninput="mascaraCpf()" maxlength="14"> <br><br>
+                    <label for="Tel">Telefone</label>
+                    <input type="tel" name="" id="Tel" placeholder="+55 (xx) x xxxx-xxxx" oninput="mascaraTel()" maxlength="21"> <br><br>
+                    <button class="btn-add" onclick="RespostaCriacao()">Criar Conta</button>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

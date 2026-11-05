@@ -1,0 +1,125 @@
+[
+    {
+    "id":"1",
+    "tipo":"Combinado",
+    "nome":"Combo Salmão Supreme",
+    "unidade":"un",
+    "quantidade":"20",
+    "preco":"69,90"
+    },
+    {
+        "id":"2",
+        "tipo":"Combinado",
+        "nome":"Combo Warrior Executivo",
+        "unidade":"un",
+        "quantidade":"18",
+        "preco":"58,90"
+    },
+    {
+        "id":"3",
+        "tipo":"Combinado",
+        "nome":"Combo Salmão Tradicional",
+        "unidade":"un",
+        "quantidade":"26",
+        "preco":"84,90"
+    },
+    {
+        "id":"4",
+        "tipo":"Temaki",
+        "nome":"Temaki Salmão Completo",
+        "unidade":"un",
+        "quantidade":"1",
+        "preco":"28,90"
+    },
+    {
+        "id":"5",
+        "tipo":"Temaki",
+        "nome":"Temaki Hot Crocante",
+        "unidade":"un",
+        "quantidade":"1",
+        "preco":"31,90"
+    },
+    {
+        "id":"6",
+        "tipo":"Temaki",
+        "nome":"Temaki Salmão Especial",
+        "unidade":"un",
+        "quantidade":"1",
+        "preco":"32,90"
+    },
+    {
+        "id":"7",
+        "tipo":"Hot Roll",
+        "nome":"Hot Roll Cream Cheese",
+        "unidade":"un",
+        "quantidade":"6",
+        "preco":"26,90"
+    },
+    {
+        "id":"8",
+        "tipo":"Hot Roll",
+        "nome":"Hot Roll Couve Crispy ",
+        "unidade":"un",
+        "quantidade":"10",
+        "preco":"36,90"
+    },
+    {
+        "id":"9",
+        "tipo":"Hot Roll",
+        "nome":"Hot Roll Geleia de Pimenta",
+        "unidade":"un",
+        "quantidade":"8",
+        "preco":"32,90"
+    },
+    {
+        "id":"10",
+        "tipo":"Sashimi",
+        "nome":"Sashimi Salmão",
+        "unidade":"lâminas",
+        "quantidade":"10",
+        "preco":"32,90"
+    },
+    {
+        "id":"11",
+        "tipo":"Sashimi",
+        "nome":"Sashimi Duo",
+        "unidade":"lâminas",
+        "quantidade":"10",
+        "preco":"46,00"
+    },
+    {
+        "id":"12",
+        "tipo":"Sashimi",
+        "nome":"Festival Sashimi Warrior",
+        "unidade":"un",
+        "quantidade":"30",
+        "preco":"119,90"
+    },
+    {
+        "id":"13",
+        "tipo":"Poke",
+        "nome":"Poke Duo Warrior",
+        "unidade":"gramas",
+        "quantidade":"500",
+        "preco":"45,90"
+    },
+    {
+        "id":"14",
+        "tipo":"Poke",
+        "nome":"Poke Salmão Classic",
+        "unidade":"gramas",
+        "quantidade":"480",
+        "preco":"42,90"
+    },
+    {
+        "id":"15",
+        "tipo":"Poke",
+        "nome":"Poke Tropical Hawaii",
+        "unidade":"gramas",
+        "quantidade":"400",
+        "preco":"39,90"
+    }
+    
+]
+
+
