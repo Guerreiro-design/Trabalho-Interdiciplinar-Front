@@ -534,19 +534,17 @@ function RespostaLogin() {
         return;
     }
 
-    // Procura se o usuário já criou conta anteriormente para restaurar CPF, CEP e Telefone
     let contasSalvas = [];
     try { contasSalvas = JSON.parse(localStorage.getItem('sushi_warrior_contas')) || []; } catch (err) { }
     
-    const contaEncontrada = contasSalvas.find(c => c.nome.toLowerCase() === nome.toLowerCase());
-    const dadosExistentes = JSON.parse(localStorage.getItem('sushi_warrior_usuario')) || {};
+    const contaEncontrada = contasSalvas.find(c => c.nome.trim().toLowerCase() === nome.toLowerCase());
 
     const dadosUsuario = contaEncontrada
         ? { ...contaEncontrada }
-        : { ...dadosExistentes, nome: nome };
+        : { nome: nome };
 
     localStorage.setItem('sushi_warrior_usuario', JSON.stringify(dadosUsuario));
-    window.location.href = 'perfil.html';
+    window.location.href = 'Perfil.html';
 }
 
 function RespostaCriacao() {
@@ -576,6 +574,15 @@ function RespostaCriacao() {
         return;
     }
 
+    let contasSalvas = [];
+    try { contasSalvas = JSON.parse(localStorage.getItem('sushi_warrior_contas')) || []; } catch (err) { }
+
+    const jaExiste = contasSalvas.some(c => c.nome.trim().toLowerCase() === nome.toLowerCase());
+    if (jaExiste) {
+        alert('Já existe uma conta cadastrada com esse nome! Faça login ou escolha outro nome.');
+        return;
+    }
+
     const dadosUsuario = {
         nome: nome,
         cep: cep,
@@ -584,18 +591,9 @@ function RespostaCriacao() {
         criadoEm: new Date().toISOString()
     };
 
-    // Salva a sessão ativa
     localStorage.setItem('sushi_warrior_usuario', JSON.stringify(dadosUsuario));
 
-    // Salva no registro de contas para manter os dados mesmo após fazer logout
-    let contasSalvas = [];
-    try { contasSalvas = JSON.parse(localStorage.getItem('sushi_warrior_contas')) || []; } catch (err) { }
-    const indiceExistente = contasSalvas.findIndex(c => c.nome.toLowerCase() === nome.toLowerCase());
-    if (indiceExistente >= 0) {
-        contasSalvas[indiceExistente] = dadosUsuario;
-    } else {
-        contasSalvas.push(dadosUsuario);
-    }
+    contasSalvas.push(dadosUsuario);
     localStorage.setItem('sushi_warrior_contas', JSON.stringify(contasSalvas));
 
     if (BAIXAR_JSON_DO_USUARIO) {
@@ -606,7 +604,7 @@ function RespostaCriacao() {
         }
     }
 
-    setTimeout(() => { window.location.href = 'perfil.html'; }, 400);
+    setTimeout(() => { window.location.href = 'Perfil.html'; }, 400);
 }
 
 function carregarPerfilEHistorico() {
@@ -615,20 +613,26 @@ function carregarPerfilEHistorico() {
 
     const dadosSalvos = localStorage.getItem('sushi_warrior_usuario');
 
-    if (dadosSalvos) {
-        const usuario = JSON.parse(dadosSalvos);
-        elNome.innerText = `Olá, ${usuario.nome}!`;
-
-        if (document.getElementById('perfil-cpf')) document.getElementById('perfil-cpf').innerText = usuario.cpf || 'Não informado';
-        if (document.getElementById('perfil-tel')) document.getElementById('perfil-tel').innerText = usuario.telefone || 'Não informado';
-        if (document.getElementById('perfil-cep')) document.getElementById('perfil-cep').innerText = usuario.cep || 'Não informado';
-    } else {
+    if (!dadosSalvos) {
         alert('Faça login primeiro para acessar o seu perfil!');
-        window.location.href = 'login.html';
+        window.location.href = 'Login.html';
         return;
     }
 
-    const historicoPedidos = JSON.parse(localStorage.getItem('sushi_warrior_pedidos')) || [];
+    const usuario = JSON.parse(dadosSalvos);
+    elNome.innerText = `Olá, ${usuario.nome}!`;
+
+    if (document.getElementById('perfil-cpf')) document.getElementById('perfil-cpf').innerText = usuario.cpf || 'Não informado';
+    if (document.getElementById('perfil-tel')) document.getElementById('perfil-tel').innerText = usuario.telefone || 'Não informado';
+    if (document.getElementById('perfil-cep')) document.getElementById('perfil-cep').innerText = usuario.cep || 'Não informado';
+
+    const todosPedidos = JSON.parse(localStorage.getItem('sushi_warrior_pedidos')) || [];
+    const historicoPedidos = todosPedidos.filter(pedido =>
+        pedido.cliente &&
+        pedido.cliente.nome &&
+        pedido.cliente.nome.trim().toLowerCase() === usuario.nome.trim().toLowerCase()
+    );
+
     const elHistorico = document.getElementById('historico-pedidos');
     const elTotalGastou = document.getElementById('total-gastou');
 
@@ -660,5 +664,7 @@ function carregarPerfilEHistorico() {
 
 function fazerLogout() {
     localStorage.removeItem('sushi_warrior_usuario');
-    window.location.href = 'login.html';
+    localStorage.removeItem('sushi_warrior_carrinho');
+    carrinho = [];
+    window.location.href = 'Login.html';
 }
