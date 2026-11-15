@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Perfil Sushi Warrior</title>
+    <title>Meu Perfil - Sushi Warrior</title>
+     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="SushiWarrior.css">
 </head>
-
 <body>
+
     <header>
         <div class="CorHeader">
             <ul class="Ulheader">
@@ -32,45 +31,71 @@
             </ul>
         </div>
     </header>
-
     <main class="TextoChamativo">
         <div class="CorChamativo">
             <div class="TxTChamativo">
                 <div class="conteudo-text">
-                    <h1>Faça login </h1>
-                    <p>Seu nome:</p>
-                    <input type="text">
-                    <p>Senha:</p>
-                    <input type="text"><br>
-                    <button class="btn-add" onclick="RespostaLogin()">Terminar Login</button>
-                </div>
-            </div>
-        </div>
+                    <h1 id="perfil-nome" class="NDSV">Carregando perfil...</h1>
 
-        <br> <br>
-        
-        <div class="CorChamativo">
-            <div class="TxTChamativo">
-                <div class="conteudo-text">
-                    <h1>Criar conta</h1>
-                    <p>Seu nome:</p>
-                    <input type="text">
-                    <p>Senha:</p>
-                    <input type="text">
-                    <p>Rescreva sua senha:</p>
-                    <input type="text"><br><br>
-                    <label for="Cep">Cep</label>
-                    <input type="cep" name="" id="Cep" placeholder="xx.xxx-xxx" oninput="mascaraCep()" maxlength="10"> <br><br>
-                    <label for="CPF ">CPF</label>
-                    <input type="cpf" name="" id="CPF" placeholder="xxx.xxx.xxx-xx" oninput="mascaraCpf()" maxlength="14"> <br><br>
-                    <label for="Tel">Telefone</label>
-                    <input type="tel" name="" id="Tel" placeholder="+55 (xx) x xxxx-xxxx" oninput="mascaraTel()" maxlength="21"> <br><br>
-                    <button class="btn-add" onclick="RespostaCriacao()">Criar Conta</button>
-                    
+                    <div class="dados-usuario">
+                        <p><strong>CPF:</strong> <span id="perfil-cpf">---</span></p>
+                        <p><strong>Telefone:</strong> <span id="perfil-tel">---</span></p>
+                        <p><strong>CEP:</strong> <span id="perfil-cep">---</span></p>
+                    </div>
+
+                    <div class="Historico">
+                        <h4>Seu Histórico de Pedidos:</h4><br>
+                        <div id="historico-pedidos" class="HP">Nenhum pedido realizado ainda.</div><br>
+                        
+                        <h4 class="QP">Essa é a quantidade de quanto você já gastou em nosso restaurante:</h4><br>
+                        <p>Você já gastou: <strong id="total-gastou">R$ 0,00</strong></p>
+                        <h3>Muito Obrigado!</h3>
+                    </div>
+
+                    <br>
+                    <button type="button" class="btn-add btn-sair" onclick="fazerLogout()">Sair da Conta</button>
                 </div>
             </div>
         </div>
     </main>
-</body>
 
+    <footer>
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <div class="footer-logo">
+                    <img src="IMG's/LogoLoja.png" alt="Sushi Warrior Logo">
+                    <h3>Sushi Warrior</h3>
+                </div>
+                <p>O melhor da culinária japonesa com peixes frescos e preparados com maestria artesanal.</p>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html#section1">Categorias</a></li>
+                    <li><a href="index.html#cardapio">Cardápio Completo</a></li>
+                    <li><a href="index.html">Página Inicial</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Atendimento</h4>
+                <p>Segunda a Sabado: 18h às 23:30h</p>
+                <p>Rua dos Guerreiros, 1000 - Burtis</p>
+                <p>Contato: (31) 9520-3525</p>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Formas de Pagamento</h4>
+                <p>Aceitamos Pix, Cartão de Crédito, Débito e Dinheiro na entrega.</p>
+            </div>
+        </div>
+
+        <div class="footer-direitos">
+            <p>&copy; 2026 Sushi Warrior. Todos os direitos reservados. Projeto Escolar.</p>
+        </div>
+    </footer>
+
+    
+</body>
 </html>
